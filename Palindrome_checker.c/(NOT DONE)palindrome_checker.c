@@ -1,14 +1,24 @@
 #include <stdio.h>
 
-int isPalindrome(int *arr, int size);
+int isPalindrome(int *arr, int size) {
+    int *left = arr;
+    int *right = arr + size - 1;
+
+    while (left < right) {
+        if (*left != *right) {     
+            return 0;
+        }
+        left++;
+        right--;
+    }
+    return 1;
+}
 
 int main() {
     int n;
-    
+
     printf("Enter array size: ");
-    if (scanf("%d", &n) != 1 || n <= 0) {
-        return 1;
-    }
+    scanf("%d", &n);
 
     int a[n];
     printf("Enter elements: ");
@@ -18,8 +28,10 @@ int main() {
 
     if (isPalindrome(a, n)) {
         printf("PALINDROME\n");
-    } else {
+    } 
+    else {
         printf("NOT PALINDROME\n");
     }
-	
+
     return 0;
+}
